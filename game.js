@@ -7,6 +7,9 @@ const prompt = promptSync({ sigint: true });
 }*/
 let coordinate;
 let boardItems;
+let currentPlayer;
+let counter;
+let inGame = true;
 
 function getEmptyBoard(){
     boardItems = [
@@ -54,8 +57,9 @@ function getHumanCoordinates(){
     return array
 }
 
-function makeMove(boardItems, coordinate){
-boardItems[coordinate[0]][coordinate[1]] = "X";
+function makeMove(boardItems, coordinate, currentPlayer){
+
+    boardItems[coordinate[0]][coordinate[1]] = currentPlayer;
 }
 
 
@@ -63,10 +67,17 @@ boardItems[coordinate[0]][coordinate[1]] = "X";
 
 function game(){
     displayBoard(getEmptyBoard())
-    coordinate = getHumanCoordinates()
-    makeMove(boardItems, coordinate)
-    displayBoard(boardItems)
-    
+    while(inGame){
+        counter++
+        if(counter%2==0){
+            currentPlayer="O";
+        }else{
+            currentPlayer="X";
+        }
+        coordinate = getHumanCoordinates()
+        makeMove(boardItems, coordinate, currentPlayer)
+        displayBoard(boardItems)
+    }
 }
 
 game()
