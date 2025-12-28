@@ -8,7 +8,7 @@ const prompt = promptSync({ sigint: true });
 let coordinate;
 let boardItems;
 let currentPlayer;
-let counter;
+let counter = 2;
 let inGame = true;
 
 function getEmptyBoard(){
@@ -58,9 +58,10 @@ function getHumanCoordinates(){
 }
 
 function makeMove(boardItems, coordinate, currentPlayer){
-
     boardItems[coordinate[0]][coordinate[1]] = currentPlayer;
 }
+
+
 
 
 
@@ -77,6 +78,7 @@ function game(){
         coordinate = getHumanCoordinates()
         makeMove(boardItems, coordinate, currentPlayer)
         displayBoard(boardItems)
+        isBoardFull()
     }
 }
 
