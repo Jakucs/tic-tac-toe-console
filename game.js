@@ -61,7 +61,19 @@ function makeMove(boardItems, coordinate, currentPlayer){
     boardItems[coordinate[0]][coordinate[1]] = currentPlayer;
 }
 
-
+function isBoardFull(){
+    let boardItems2 = [];
+    for (let i of boardItems){
+        for (let j of i){
+            boardItems2.push(j)
+        }
+    }
+    if((boardItems2.includes("."))){
+        return true
+    }else{
+        return false
+    }
+}
 
 
 
