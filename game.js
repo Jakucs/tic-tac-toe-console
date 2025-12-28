@@ -5,11 +5,13 @@ const prompt = promptSync({ sigint: true });
 /*function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }*/
+let userInput;
 let coordinate;
 let boardItems;
 let currentPlayer;
 let counter = 2;
 let inGame = true;
+let win;
 
 function getEmptyBoard(){
     boardItems = [
@@ -34,7 +36,7 @@ function displayBoard(boardItems){
 
 function getHumanCoordinates(){
     let array = [];
-    let userInput = prompt("Your coordinate: ")
+    userInput = prompt("Your coordinate: ")
     while(userInput != "a1" && userInput != "a2" && userInput != "a3" && 
         userInput != "b1" && userInput != "b2" && userInput != "b3" && 
         userInput != "c1" && userInput != "c2" && userInput != "c3"){
@@ -58,7 +60,12 @@ function getHumanCoordinates(){
 }
 
 function makeMove(boardItems, coordinate, currentPlayer){
-    boardItems[coordinate[0]][coordinate[1]] = currentPlayer;
+    if (boardItems[coordinate[0]][coordinate[1]] == "."){
+        boardItems[coordinate[0]][coordinate[1]] = currentPlayer;
+    }else{
+        counter--;
+        console.log("Ez már volt")
+    }
 }
 
 function isBoardFull(){
@@ -76,6 +83,34 @@ function isBoardFull(){
 }
 
 
+function getWinningPlayer(){
+    console.log("boardItems:", boardItems)
+    if(boardItems[0][0] == "X" && boardItems[0][1] == "X" && boardItems[0][2] == "X"){
+        console.log("Vízszintesen nyert az X")
+    } else if (boardItems[1][0] == "X" && boardItems[1][1] == "X" && boardItems[1][2] == "X"){
+        console.log("Vízszintesen nyert az X")
+    } else if (boardItems[2][0] == "X" && boardItems[2][1] == "X" && boardItems[2][2] == "X"){
+        console.log("Vízszintesen nyert az X")
+    } else if (boardItems[0][0] == "O" && boardItems[0][1] == "O" && boardItems[0][2] == "O"){
+        console.log("Vízszintesen nyert az O")
+    } else if (boardItems[1][0] == "O" && boardItems[1][1] == "O" && boardItems[1][2] == "O"){
+        console.log("Vízszintesen nyert az O")
+    } else if (boardItems[2][0] == "O" && boardItems[2][1] == "O" && boardItems[2][2] == "O"){
+        console.log("Vízszintesen nyert az O")
+    } else if (boardItems[0][0] == "X" && boardItems[1][0] == "X" && boardItems[2][0] == "X"){
+        console.log("Függőlegesen nyert az X")
+    } else if (boardItems[0][1] == "X" && boardItems[1][1] == "X" && boardItems[2][1] == "X"){
+        console.log("Függőlegesen nyert az X")
+    } else if (boardItems[0][2] == "X" && boardItems[1][2] == "X" && boardItems[2][2] == "X"){
+        console.log("Függőlegesen nyert az X")
+    } else if (boardItems[0][0] == "O" && boardItems[1][0] == "O" && boardItems[2][0] == "O"){
+        console.log("Függőlegesen nyert az O")
+    } else if (boardItems[0][1] == "O" && boardItems[1][1] == "O" && boardItems[2][1] == "O"){
+        console.log("Függőlegesen nyert az O")
+    } else if (boardItems[0][2] == "O" && boardItems[1][2] == "O" && boardItems[2][2] == "O"){
+        console.log("Függőlegesen nyert az O")
+    }
+}
 
 
 function game(){
@@ -90,7 +125,8 @@ function game(){
         coordinate = getHumanCoordinates()
         makeMove(boardItems, coordinate, currentPlayer)
         displayBoard(boardItems)
-        isBoardFull()
+        win = isBoardFull()
+        getWinningPlayer()
     }
 }
 
