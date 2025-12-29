@@ -85,7 +85,21 @@ function isBoardFull(){
 
 function getWinningPlayer(){
     console.log("boardItems:", boardItems)
-    if(boardItems[0][0] == "X" && boardItems[0][1] == "X" && boardItems[0][2] == "X"){
+    //VÍZSZINTES ELLENŐRZÉS
+    let firstItem = boardItems[0];
+    for ( let i = 0; i < boardItems.length; i++){
+        //.log("boardItems[i]", boardItems[i])
+        if(!(boardItems[i].includes("."))){
+            if(boardItems[i] == firstItem){
+                console.log(`Vízszintesen nyert ${firstItem[0]}`)
+            }
+        }
+    }
+
+
+    
+    
+    /*if(boardItems[0][0] == "X" && boardItems[0][1] == "X" && boardItems[0][2] == "X"){
         console.log("Vízszintesen nyert az X")
     } else if (boardItems[1][0] == "X" && boardItems[1][1] == "X" && boardItems[1][2] == "X"){
         console.log("Vízszintesen nyert az X")
@@ -109,7 +123,7 @@ function getWinningPlayer(){
         console.log("Függőlegesen nyert az O")
     } else if (boardItems[0][2] == "O" && boardItems[1][2] == "O" && boardItems[2][2] == "O"){
         console.log("Függőlegesen nyert az O")
-    }
+    }*/
 }
 
 
