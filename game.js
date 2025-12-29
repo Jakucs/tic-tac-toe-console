@@ -84,14 +84,21 @@ function isBoardFull(){
 
 
 function getWinningPlayer(){
-    console.log("boardItems:", boardItems)
+    //console.log("boardItems:", boardItems)
     //VÍZSZINTES ELLENŐRZÉS
-    let firstItem = boardItems[0];
+    let firstItem;
     for ( let i = 0; i < boardItems.length; i++){
-        //.log("boardItems[i]", boardItems[i])
+        firstItem = boardItems[i][0];
+        //console.log("boardItems[i]", boardItems[i])
         if(!(boardItems[i].includes("."))){
-            if(boardItems[i] == firstItem){
-                console.log(`Vízszintesen nyert ${firstItem[0]}`)
+            let jArray = [];
+            for (let j of boardItems[i]){
+                if(firstItem == j){
+                    jArray.push(j)
+                }
+            }
+            if(jArray.length == 3){
+                console.log(`Nyert a ${jArray[0]} játékos vízszintesen`)
             }
         }
     }
