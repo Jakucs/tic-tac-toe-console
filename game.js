@@ -88,18 +88,21 @@ function getWinningPlayer(){
     //VÍZSZINTES ELLENŐRZÉS
     let threeInRow = 0;
     //row checks
-    for (let row = 0; row < boardItems.length; row++) {
-        console.log("boardItems[row]:", boardItems[row])
+    //console.log("boardItems: ", boardItems)
+
+    for (let i = 0; i < boardItems.length; i++){
         threeInRow = 0;
-        for (let col = 0; col < boardItems[0].length; col++) {
-            console.log("boardItems[col]:", boardItems[col])
-            if(boardItems[row][col] == boardItems[row][0] && boardItems[row][col] !== "."){
-                
+        //console.log("boarditems[i]:", boardItems[i])
+        for(let j = 0; j < boardItems[i].length;j ++){
+            if(boardItems[i][0] == boardItems[i][j] && !boardItems[i].includes(".")){
+                threeInRow++;
+                if(threeInRow==3){
+                    console.log(`Nyert: ${boardItems[i][j]}`)
+
+                }
             }
         }
     }
-
-
 
     /*let firstItem;
     for ( let i = 0; i < boardItems.length; i++){
@@ -119,10 +122,26 @@ function getWinningPlayer(){
     }*/
 
     //FÜGGŐLEGES ELLENŐRZÉS
-    let iArray = [];
-    for ( let i = 0; i < boardItems.length; i++){
-        console.log("boardItems[i]:", boardItems[i])
-        iArray.push(boardItems[i][0])
+    let threeInColumn;
+    for ( let col = 0; col < boardItems[0].length; col++){
+        threeInColumn = 0
+        for (let row = 0; row < boardItems.length; row++){
+            //console.log("boardItems[col][row]:", boardItems[col][row])
+            if(boardItems[0][col] == boardItems[row][col] && boardItems[row][col] != "."){
+                threeInColumn++
+                if(threeInColumn == 3){
+                    console.log(`Függőlegesen nyert ${boardItems[0][col]}`)
+                }
+            }
+        }
+    }
+
+    //SRÉJ ELLENŐRZÉS alulról ballról jobba fel:
+    for (let i = 0; i < boardItems.length; i++){
+        console.log("boarditems.lenght:", boardItems.length)
+        for (let j = 0; j < boardItems[i].length; j++){
+            console.log("boarditemsssss: ", boardItems[i])
+        }
     }
     
 
