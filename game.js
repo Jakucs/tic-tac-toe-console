@@ -136,12 +136,19 @@ function getWinningPlayer(){
         }
     }
 
-    //SRÉJ ELLENŐRZÉS alulról ballról jobba fel:
+    //SRÉJ ELLENŐRZÉS alulról balról jobba fel:
     for (let i = 0; i < boardItems.length; i++){
         console.log("boarditems.lenght:", boardItems.length)
         for (let j = 0; j < boardItems[i].length; j++){
             console.log("boarditemsssss: ", boardItems[i])
+
         }
+    }
+
+    if (boardItems[0][0] == "X" && boardItems[1][1] == "X" && boardItems [2][2] == "X"){
+        console.log("X nyert sréjen.")
+    } else if  (boardItems[0][2] == "X" && boardItems[1][1] == "X" && boardItems [2][0] == "X"){
+        console.log("X nyert sréjen")
     }
     
 
