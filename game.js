@@ -145,10 +145,17 @@ function getWinningPlayer(){
         }
     }
 
-    if (boardItems[0][0] == "X" && boardItems[1][1] == "X" && boardItems [2][2] == "X"){
-        console.log("X nyert sréjen.")
-    } else if  (boardItems[0][2] == "X" && boardItems[1][1] == "X" && boardItems [2][0] == "X"){
-        console.log("X nyert sréjen")
+    if (boardItems[0][0] != "." &&
+        boardItems[0][0] == boardItems[1][1] &&
+        boardItems[1][1] == boardItems[2][2]
+    ){
+        console.log(`átlóban nyert: ${boardItems[0][0]}`)
+    }
+        if (boardItems[0][2] != "." &&
+        boardItems[0][2] == boardItems[1][1] &&
+        boardItems[1][1] == boardItems[2][0]
+    ){
+        console.log(`átlóban nyert: ${boardItems[0][2]}`)
     }
     
 
