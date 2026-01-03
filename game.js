@@ -88,7 +88,6 @@ function getWinningPlayer(){
     //VÍZSZINTES ELLENŐRZÉS
     let threeInRow = 0;
     //row checks
-    //console.log("boardItems: ", boardItems)
 
     for (let i = 0; i < boardItems.length; i++){
         threeInRow = 0;
@@ -98,7 +97,7 @@ function getWinningPlayer(){
                 threeInRow++;
                 if(threeInRow==3){
                     console.log(`Nyert: ${boardItems[i][j]}`)
-
+                    return boardItems[i][j]
                 }
             }
         }
@@ -131,36 +130,41 @@ function getWinningPlayer(){
                 threeInColumn++
                 if(threeInColumn == 3){
                     console.log(`Függőlegesen nyert ${boardItems[0][col]}`)
+                    return boardItems[0][col];
                 }
             }
         }
     }
 
-    //SRÉJ ELLENŐRZÉS alulról balról jobba fel:
-    for (let i = 0; i < boardItems.length; i++){
-        console.log("boarditems.lenght:", boardItems.length)
-        for (let j = 0; j < boardItems[i].length; j++){
-            console.log("boarditemsssss: ", boardItems[i])
-
-        }
-    }
-
+    //SRÉJ ELLENŐRZÉS:
+    //ciklus nélkül:
     if (boardItems[0][0] != "." &&
         boardItems[0][0] == boardItems[1][1] &&
         boardItems[1][1] == boardItems[2][2]
     ){
         console.log(`átlóban nyert: ${boardItems[0][0]}`)
-    }
-        if (boardItems[0][2] != "." &&
+        return boardItems[0][0];
+    } else if (boardItems[0][2] != "." &&
         boardItems[0][2] == boardItems[1][1] &&
         boardItems[1][1] == boardItems[2][0]
-    ){
+    ) {
         console.log(`átlóban nyert: ${boardItems[0][2]}`)
+        return boardItems[0][2];
+    }
+    
+    //ciklussal
+    let counter;
+    for (let i = 0; i < boardItems.length; i++){
+        for (let j = 0; j < boardItems[i].length; j++){
+            if(boardItems[i][j] == "."){
+                counter++
+            }
+        }
     }
     
 
     
-    
+    //statikusan:
     /*if(boardItems[0][0] == "X" && boardItems[0][1] == "X" && boardItems[0][2] == "X"){
         console.log("Vízszintesen nyert az X")
     } else if (boardItems[1][0] == "X" && boardItems[1][1] == "X" && boardItems[1][2] == "X"){
@@ -188,8 +192,19 @@ function getWinningPlayer(){
     }*/
 }
 
+function menu(){
+    console.log("How you want to play?")
+    console.log("1. Human VS Human")
+    console.log("2. AI VS Human")
+    let userInput = prompt("Your choose: ")
+    
+}
+
 
 function game(){
+
+
+
     displayBoard(getEmptyBoard())
     while(inGame){
         counter++
@@ -204,6 +219,8 @@ function game(){
         win = isBoardFull()
         getWinningPlayer()
     }
+ 
+
 }
 
 game()
