@@ -5,6 +5,7 @@ const prompt = promptSync({ sigint: true });
 /*function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }*/
+let menuInput;
 let userInput;
 let coordinate;
 let boardItems;
@@ -196,14 +197,13 @@ function menu(){
     console.log("How you want to play?")
     console.log("1. Human VS Human")
     console.log("2. AI VS Human")
-    let userInput = prompt("Your choose: ")
-    
+    menuInput = prompt("Your choose: ")
 }
 
 
 function game(){
 
-
+    //menu()
 
     displayBoard(getEmptyBoard())
     while(inGame){
