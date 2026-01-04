@@ -193,7 +193,27 @@ function getWinningPlayer(){
     }*/
 }
 
+function getRandomAiCoordinates(boardItems){
+let array = [];
+let array2 = [];
+    for (let row = 0; row < boardItems.length; row++){
+        if(boardItems[row].includes(".")){
+            array.push(row)
+        }
+        for (let col = 0; col<boardItems[row].length; col++){
+            if(boardItems[col].includes(".")){
+                array.push(col)
 
+                if(array.length>=2){
+                    array2.push(array)
+                    array.length = 0
+                }
+                
+            }
+        }
+    }
+    console.log("array: ", array)
+}
 
 
 function menu(){
