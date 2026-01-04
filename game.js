@@ -193,6 +193,9 @@ function getWinningPlayer(){
     }*/
 }
 
+
+
+
 function menu(){
     console.log("How you want to play?")
     console.log("1. Human VS Human")
@@ -202,9 +205,9 @@ function menu(){
 
 
 function game(){
-
+    
     //menu()
-
+    
     displayBoard(getEmptyBoard())
     while(inGame){
         counter++
@@ -213,6 +216,7 @@ function game(){
         }else{
             currentPlayer="X";
         }
+        getRandomAiCoordinates(boardItems)
         coordinate = getHumanCoordinates()
         makeMove(boardItems, coordinate, currentPlayer)
         displayBoard(boardItems)
